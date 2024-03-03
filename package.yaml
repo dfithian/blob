@@ -1,0 +1,72 @@
+name: blob
+version: 0.1
+maintainer: Dan Fithian
+
+ghc-options: -Wall -Wunused-packages -fwarn-tabs -fwarn-redundant-constraints -Wincomplete-uni-patterns -O0
+
+default-extensions:
+  - ConstraintKinds
+  - DataKinds
+  - DefaultSignatures
+  - DeriveDataTypeable
+  - DeriveGeneric
+  - DerivingStrategies
+  - DerivingVia
+  - EmptyDataDecls
+  - FlexibleContexts
+  - FlexibleInstances
+  - GADTs
+  - GeneralizedNewtypeDeriving
+  - LambdaCase
+  - MultiParamTypeClasses
+  - MultiWayIf
+  - NamedFieldPuns
+  - NoImplicitPrelude
+  - NoMonomorphismRestriction
+  - OverloadedStrings
+  - QuasiQuotes
+  - RankNTypes
+  - RecordWildCards
+  - ScopedTypeVariables
+  - StandaloneDeriving
+  - TemplateHaskell
+  - TupleSections
+  - TypeApplications
+  - TypeFamilies
+  - TypeOperators
+  - ViewPatterns
+
+language: Haskell2010
+
+library:
+  source-dirs: src
+  exposed-modules:
+    - Application
+    - Foundation
+    - Json
+    - Servant
+    - Server
+    - Settings
+    - Types
+  dependencies:
+    - aeson
+    - base
+    - exceptions
+    - monad-logger
+    - mtl
+    - postgresql-simple
+    - resource-pool
+    - servant
+    - servant-server
+    - text
+    - time
+    - wai-enforce-https
+    - wai-extra
+    - warp
+    - yaml
+
+executable:
+  main: main.hs
+  source-dirs: app
+  dependencies:
+    - blob
