@@ -7,7 +7,7 @@ app = Flask(__name__)
 
 DATABASE_PRIVATE_URL = os.environ.get('DATABASE_PRIVATE_URL', 'postgres://localhost:5432/postgres')
 
-@app.route('/api/v1/blob/<blob_id>', methods=['GET', 'PUT'])
+@app.route('/blob/<blob_id>', methods=['GET', 'PUT'])
 def put_blob(blob_id):
     pin = request.headers.get('X-Blob-Pin')
     if not pin:
