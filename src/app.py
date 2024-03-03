@@ -5,7 +5,7 @@ import psycopg2
 
 app = Flask(__name__)
 
-DB_CONN_STR = os.environ.get('DB_CONN_STR', 'postgres://localhost:5432/postgres')
+DATABASE_PRIVATE_URL = os.environ.get('DATABASE_PRIVATE_URL', 'postgres://localhost:5432/postgres')
 
 @app.route('/api/v1/blob/<blob_id>', methods=['GET', 'PUT'])
 def put_blob(blob_id):
