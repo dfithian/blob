@@ -13,7 +13,7 @@ def put_blob(blob_id):
     if not pin:
         abort(404)
     if request.method == 'GET':
-        conn = psycopg2.connect(DB_CONN_STR)
+        conn = psycopg2.connect(DATABASE_PRIVATE_URL)
         with conn:
             with conn.cursor() as cur:
                 cur.execute('SELECT blob_pin, blob, modified_at FROM blob.blobs WHERE blob_id = %s', (blob_id,))
@@ -29,7 +29,7 @@ def put_blob(blob_id):
                 })
     elif request.method == 'PUT':
         blob = request.data.decode('utf-8')
-        conn = psycopg2.connect(DB_CONN_STR)
+        conn = psycopg2.connect(DATABASE_PRIVATE_URL)
         with conn:
             with conn.cursor() as cur:
                 cur.execute('SELECT blob_pin FROM blob.blobs WHERE blob_id = %s', (blob_id,))
