@@ -65,8 +65,9 @@ library:
     - warp
     - yaml
 
-executable:
-  main: main.hs
-  source-dirs: app
-  dependencies:
-    - blob
+executables:
+  blob:
+    main: main.hs
+    source-dirs: app
+    dependencies:
+      - blob

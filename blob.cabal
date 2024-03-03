@@ -7,6 +7,8 @@ cabal-version: 1.12
 name:           blob
 version:        0.1
 maintainer:     Dan Fithian
+license:        MIT
+license-file:   LICENSE
 build-type:     Simple
 
 library
