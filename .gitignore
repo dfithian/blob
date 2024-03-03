@@ -1,5 +1,2 @@
-project.xcworkspace/
-xcuserdata/
-Pods/
-Podfile.lock
 tmp/
+venv/
