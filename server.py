@@ -25,7 +25,7 @@ def put_blob(blob_id):
                     abort(404)
                 return jsonify({
                     'blob': row[1],
-                    'modifiedAt': row[2].isoformat()
+                    'modifiedAt': row[2].isoformat(timespec='seconds')
                 })
     elif request.method == 'PUT':
         blob = request.data.decode('utf-8')
