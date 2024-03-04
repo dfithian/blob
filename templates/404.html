@@ -1,0 +1,15 @@
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+<div>
+  {% if app_title is not none %}
+  <title>{{ app_title }}</title>
+  {% else %}
+  <title>Blob</title>
+  {% endif %}
+  <div class="content p-3">
+    <h1>Not Found</h1>
+    <p>Oops! Couldn't find that page.</p>
+    {% if redirect_url is not none %}
+    <a href="{{ redirect_url }}">Go Home</a>
+    {% endif %}
+  </div>
+</div>
