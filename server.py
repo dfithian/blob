@@ -1,17 +1,21 @@
 from datetime import datetime
-from flask import Flask, abort, jsonify, request
+from flask import Flask, abort, jsonify, redirect, request
 import os
 import psycopg2
 
 app = Flask(__name__)
 
+REDIRECT_URL = os.environ.get('REDIRECT_URL')
 DATABASE_URL = os.environ.get('DATABASE_URL', 'postgres://localhost:5432/postgres')
 
 @app.route('/blob/<blob_id>', methods=['GET', 'PUT'])
 def put_blob(blob_id):
     pin = request.headers.get('X-Blob-Pin')
     if not pin:
-        abort(404)
+        if REDIRECT_URL:
+            redirect(REDIRECT_URL, code=307)
+        else:
+            abort(404)
     if request.method == 'GET':
         conn = psycopg2.connect(DATABASE_URL)
         with conn:
