@@ -20,7 +20,7 @@ def put_blob(blob_id):
             with conn.cursor() as cur:
                 cur.execute('SELECT blob_pin, blob, modified_at FROM blob.blobs WHERE blob_id = %s', (blob_id,))
                 row = cur.fetchone()
-                if row is not None:
+                if row is None:
                     abort(404)
                 if pin != row[0]:
                     abort(404)
